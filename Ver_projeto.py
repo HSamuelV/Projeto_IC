@@ -1,7 +1,8 @@
 from tkinter import font
-from turtle import title
 import pandas as pd
 import plotly.graph_objects as go
+from csv import writer 
+from csv import DictWriter 
 
 
 arquivo_filtrado = pd.read_csv('nos_2_filtro.csv',sep=',',encoding='utf-8')
@@ -9,9 +10,7 @@ arquivo_filtrado = pd.read_csv('nos_2_filtro.csv',sep=',',encoding='utf-8')
 #titulacao = ['Graduacao','Mestrado','Especializacao','Doutorado','PosDoc','Não Informado']
 #grande_area = {'Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
 #                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros'}
-
-
-
+#uf = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO',]
 
 #=======================Quantidade de titulação total======================
 
@@ -826,32 +825,666 @@ Cont_out_DF = len(linhas_out_DF)
 
 
 
-#linhas_naoinf_DF_grad = linhas_naoinf[((linhas_naoinf['uf'] == 'Não informado') and (linhas_naoinf['titulacao'] == 'Graduacao')) == True]
 
-#print(linhas_naoinf_DF_grad)
+
+#abrir =  open('grande_area_uf.csv', 'a+', encoding='utf-8')
+#
+#linhas_uf_arquico = {'uf' : ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']}
+#
+#
+#arquivo_linhas_uf = pd.DataFrame(linhas_uf_arquico)
+#
+#arquivo_linhas_uf.to_csv('grande_Area_uf.csv')
+#
+#
+#===================Criar arquivo da Grande Área por UF=====================
+
+linha_cabecalho =  ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+with open('grande_area_uf.csv', 'a', encoding='utf-8') as f_object: 
+
+    writer_object = writer(f_object) 
+
+    writer_object.writerow(linha_cabecalho) 
+
+    f_object.close()
+
+
+field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+dict={'uf':'AC','Não informado' : Cont_naoinf_AC,
+                'Engenharias' : Cont_eng_AC,
+                'Ciencias Exatas e da Terra' : Cont_ter_AC,
+                'Ciencias da Saude' :Cont_sau_AC,
+                'Ciencias Sociais Aplicadas' : Cont_soc_AC,
+                'Ciencias Biologicas' : Cont_bio_AC,
+                'Ciencias Agrarias' : Cont_agr_AC,
+                'Ciencias Humanas' : Cont_hum_AC,
+                'Linguistica, Letras e Artes' : Cont_ling_AC,
+                'Outros' : Cont_out_AC} 
+
+
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+
+
+field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+#AL
+dict={'uf':'AL','Não informado' : Cont_naoinf_AL,
+                'Engenharias' : Cont_eng_AL,
+                'Ciencias Exatas e da Terra' : Cont_ter_AL,
+                'Ciencias da Saude' :Cont_sau_AL,
+                'Ciencias Sociais Aplicadas' : Cont_soc_AL,
+                'Ciencias Biologicas' : Cont_bio_AL,
+                'Ciencias Agrarias' : Cont_agr_AL,
+                'Ciencias Humanas' : Cont_hum_AL,
+                'Linguistica, Letras e Artes' : Cont_ling_AL,
+                'Outros' : Cont_out_AL} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#AP
+dict={'uf':'AP','Não informado' : Cont_naoinf_AP,
+                'Engenharias' : Cont_eng_AP,
+                'Ciencias Exatas e da Terra' : Cont_ter_AP ,
+                'Ciencias da Saude' :Cont_sau_AP,
+                'Ciencias Sociais Aplicadas' : Cont_soc_AP,
+                'Ciencias Biologicas' : Cont_bio_AP,
+                'Ciencias Agrarias' : Cont_agr_AP,
+                'Ciencias Humanas' : Cont_hum_AP,
+                'Linguistica, Letras e Artes' : Cont_ling_PA,
+                'Outros' : Cont_out_AP} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#BA
+dict={'uf':'BA','Não informado' : Cont_naoinf_BA,
+                'Engenharias' : Cont_eng_BA,
+                'Ciencias Exatas e da Terra' : Cont_ter_BA,
+                'Ciencias da Saude' :Cont_sau_BA,
+                'Ciencias Sociais Aplicadas' : Cont_soc_BA,
+                'Ciencias Biologicas' : Cont_bio_BA,
+                'Ciencias Agrarias' : Cont_agr_BA,
+                'Ciencias Humanas' : Cont_hum_BA,
+                'Linguistica, Letras e Artes' : Cont_ling_BA,
+                'Outros' : Cont_out_BA} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#CE
+dict={'uf':'CE','Não informado' : Cont_naoinf_CE,
+                'Engenharias' : Cont_eng_CE,
+                'Ciencias Exatas e da Terra' : Cont_ter_CE,
+                'Ciencias da Saude' :Cont_sau_CE,
+                'Ciencias Sociais Aplicadas' : Cont_soc_CE,
+                'Ciencias Biologicas' : Cont_bio_CE,
+                'Ciencias Agrarias' : Cont_agr_CE,
+                'Ciencias Humanas' : Cont_hum_CE,
+                'Linguistica, Letras e Artes' : Cont_ling_CE,
+                'Outros' : Cont_out_CE} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#DF
+dict={'uf':'DF','Não informado' : Cont_naoinf_DF,
+                'Engenharias' : Cont_eng_DF ,
+                'Ciencias Exatas e da Terra' : Cont_ter_DF ,
+                'Ciencias da Saude' :Cont_sau_DF ,
+                'Ciencias Sociais Aplicadas' : Cont_soc_DF,
+                'Ciencias Biologicas' : Cont_bio_DF,
+                'Ciencias Agrarias' : Cont_agr_DF,
+                'Ciencias Humanas' : Cont_hum_DF,
+                'Linguistica, Letras e Artes' : Cont_ling_DF,
+                'Outros' : Cont_out_DF} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#ES
+dict={'uf':'ES','Não informado' : Cont_naoinf_DF,
+                'Engenharias' : Cont_eng_DF ,
+                'Ciencias Exatas e da Terra' : Cont_ter_ES,
+                'Ciencias da Saude' :Cont_sau_ES,
+                'Ciencias Sociais Aplicadas' : Cont_soc_ES,
+                'Ciencias Biologicas' : Cont_bio_ES,
+                'Ciencias Agrarias' : Cont_agr_ES,
+                'Ciencias Humanas' : Cont_hum_ES,
+                'Linguistica, Letras e Artes' : Cont_ling_ES,
+                'Outros' : Cont_out_ES} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#GO
+dict={'uf':'GO','Não informado' : Cont_naoinf_GO,
+                'Engenharias' : Cont_eng_GO,
+                'Ciencias Exatas e da Terra' : Cont_ter_GO,
+                'Ciencias da Saude' :Cont_sau_GO,
+                'Ciencias Sociais Aplicadas' : Cont_soc_GO,
+                'Ciencias Biologicas' : Cont_bio_GO,
+                'Ciencias Agrarias' : Cont_agr_GO,
+                'Ciencias Humanas' : Cont_hum_GO,
+                'Linguistica, Letras e Artes' : Cont_ling_GO,
+                'Outros' : Cont_out_GO} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#MA
+dict={'uf':'MA','Não informado' : Cont_naoinf_MA,
+                'Engenharias' : Cont_eng_MA,
+                'Ciencias Exatas e da Terra' : Cont_ter_MA,
+                'Ciencias da Saude' :Cont_sau_MA,
+                'Ciencias Sociais Aplicadas' : Cont_soc_MA,
+                'Ciencias Biologicas' : Cont_bio_MA,
+                'Ciencias Agrarias' : Cont_agr_MA,
+                'Ciencias Humanas' : Cont_hum_MA,
+                'Linguistica, Letras e Artes' : Cont_ling_MA,
+                'Outros' : Cont_out_MA} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#MT
+dict={'uf':'MT','Não informado' : Cont_naoinf_MT,
+                'Engenharias' : Cont_eng_MT,
+                'Ciencias Exatas e da Terra' : Cont_ter_MT,
+                'Ciencias da Saude' :Cont_sau_MT,
+                'Ciencias Sociais Aplicadas' : Cont_soc_MT,
+                'Ciencias Biologicas' : Cont_bio_MT,
+                'Ciencias Agrarias' : Cont_agr_MT,
+                'Ciencias Humanas' : Cont_hum_MT,
+                'Linguistica, Letras e Artes' : Cont_ling_MT,
+                'Outros' : Cont_out_MT} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#MS
+dict={'uf':'MS','Não informado' : Cont_naoinf_MS,
+                'Engenharias' : Cont_eng_MS,
+                'Ciencias Exatas e da Terra' : Cont_ter_MS,
+                'Ciencias da Saude' :Cont_sau_MS,
+                'Ciencias Sociais Aplicadas' : Cont_soc_MS,
+                'Ciencias Biologicas' : Cont_bio_MS,
+                'Ciencias Agrarias' : Cont_agr_MS,
+                'Ciencias Humanas' : Cont_hum_MS,
+                'Linguistica, Letras e Artes' : Cont_ling_MS,
+                'Outros' : Cont_out_MS} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#MG
+dict={'uf':'MG','Não informado' : Cont_naoinf_MG,
+                'Engenharias' : Cont_eng_MG,
+                'Ciencias Exatas e da Terra' : Cont_ter_MG,
+                'Ciencias da Saude' :Cont_sau_MG,
+                'Ciencias Sociais Aplicadas' : Cont_soc_MG,
+                'Ciencias Biologicas' : Cont_bio_MG,
+                'Ciencias Agrarias' : Cont_agr_MG,
+                'Ciencias Humanas' : Cont_hum_MG,
+                'Linguistica, Letras e Artes' : Cont_ling_MG,
+                'Outros' : Cont_out_MG} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#PA
+dict={'uf':'PA','Não informado' : Cont_naoinf_PA,
+                'Engenharias' : Cont_eng_PA,
+                'Ciencias Exatas e da Terra' : Cont_ter_PA,
+                'Ciencias da Saude' :Cont_sau_PA,
+                'Ciencias Sociais Aplicadas' : Cont_soc_PA,
+                'Ciencias Biologicas' : Cont_bio_PA,
+                'Ciencias Agrarias' : Cont_agr_PA,
+                'Ciencias Humanas' : Cont_hum_PA,
+                'Linguistica, Letras e Artes' : Cont_ling_PA,
+                'Outros' : Cont_out_PA} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#PB
+dict={'uf':'PB','Não informado' : Cont_naoinf_PB,
+                'Engenharias' : Cont_eng_PB,
+                'Ciencias Exatas e da Terra' : Cont_ter_PB,
+                'Ciencias da Saude' :Cont_sau_PB,
+                'Ciencias Sociais Aplicadas' : Cont_soc_PB,
+                'Ciencias Biologicas' : Cont_bio_PB,
+                'Ciencias Agrarias' : Cont_agr_PB,
+                'Ciencias Humanas' : Cont_hum_PB,
+                'Linguistica, Letras e Artes' : Cont_ling_PB,
+                'Outros' : Cont_out_PB} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#PR
+dict={'uf':'PR','Não informado' : Cont_naoinf_PR,
+                'Engenharias' : Cont_eng_PR,
+                'Ciencias Exatas e da Terra' : Cont_ter_PR,
+                'Ciencias da Saude' :Cont_sau_PR,
+                'Ciencias Sociais Aplicadas' : Cont_soc_PR,
+                'Ciencias Biologicas' : Cont_bio_PR,
+                'Ciencias Agrarias' : Cont_agr_PR,
+                'Ciencias Humanas' : Cont_hum_PR,
+                'Linguistica, Letras e Artes' : Cont_ling_PR,
+                'Outros' : Cont_out_PR} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#PE
+dict={'uf':'PE','Não informado' : Cont_naoinf_PE,
+                'Engenharias' : Cont_eng_PE,
+                'Ciencias Exatas e da Terra' : Cont_ter_PE,
+                'Ciencias da Saude' :Cont_sau_PE,
+                'Ciencias Sociais Aplicadas' : Cont_soc_PE,
+                'Ciencias Biologicas' : Cont_bio_PE,
+                'Ciencias Agrarias' : Cont_agr_PE,
+                'Ciencias Humanas' : Cont_hum_PE,
+                'Linguistica, Letras e Artes' : Cont_ling_PE,
+                'Outros' : Cont_out_PE} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#PI
+dict={'uf':'PI','Não informado' : Cont_naoinf_PI,
+                'Engenharias' : Cont_eng_PI,
+                'Ciencias Exatas e da Terra' : Cont_ter_PI,
+                'Ciencias da Saude' :Cont_sau_PI,
+                'Ciencias Sociais Aplicadas' : Cont_soc_PI,
+                'Ciencias Biologicas' : Cont_bio_PI,
+                'Ciencias Agrarias' : Cont_agr_PI,
+                'Ciencias Humanas' : Cont_hum_PI,
+                'Linguistica, Letras e Artes' : Cont_ling_PI,
+                'Outros' : Cont_out_PI} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#RJ
+dict={'uf':'RJ','Não informado' : Cont_naoinf_RJ,
+                'Engenharias' : Cont_eng_RJ,
+                'Ciencias Exatas e da Terra' : Cont_ter_RJ,
+                'Ciencias da Saude' :Cont_sau_RJ,
+                'Ciencias Sociais Aplicadas' : Cont_soc_RJ,
+                'Ciencias Biologicas' : Cont_bio_RJ,
+                'Ciencias Agrarias' : Cont_agr_RJ,
+                'Ciencias Humanas' : Cont_hum_RJ,
+                'Linguistica, Letras e Artes' : Cont_ling_RJ,
+                'Outros' : Cont_out_RJ} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#RN
+dict={'uf':'RN','Não informado' : Cont_naoinf_RN,
+                'Engenharias' : Cont_eng_RN,
+                'Ciencias Exatas e da Terra' : Cont_ter_RN,
+                'Ciencias da Saude' :Cont_sau_RN,
+                'Ciencias Sociais Aplicadas' : Cont_soc_RN,
+                'Ciencias Biologicas' : Cont_bio_RN,
+                'Ciencias Agrarias' : Cont_agr_RN,
+                'Ciencias Humanas' : Cont_hum_RN,
+                'Linguistica, Letras e Artes' : Cont_ling_RN,
+                'Outros' : Cont_out_RN} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#RS
+dict={'uf':'RS','Não informado' : Cont_naoinf_RS,
+                'Engenharias' : Cont_eng_RS,
+                'Ciencias Exatas e da Terra' : Cont_ter_RS,
+                'Ciencias da Saude' :Cont_sau_RS,
+                'Ciencias Sociais Aplicadas' : Cont_soc_RS,
+                'Ciencias Biologicas' : Cont_bio_RS,
+                'Ciencias Agrarias' : Cont_agr_RS,
+                'Ciencias Humanas' : Cont_hum_RS,
+                'Linguistica, Letras e Artes' : Cont_ling_RS,
+                'Outros' : Cont_out_RS} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#RO
+dict={'uf':'RO','Não informado' : Cont_naoinf_RO,
+                'Engenharias' : Cont_eng_RO,
+                'Ciencias Exatas e da Terra' : Cont_ter_RO,
+                'Ciencias da Saude' :Cont_sau_RO,
+                'Ciencias Sociais Aplicadas' : Cont_soc_RO,
+                'Ciencias Biologicas' : Cont_bio_RO,
+                'Ciencias Agrarias' : Cont_agr_RO,
+                'Ciencias Humanas' : Cont_hum_RO,
+                'Linguistica, Letras e Artes' : Cont_ling_RO,
+                'Outros' : Cont_out_RO} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#RR
+dict={'uf':'RR','Não informado' : Cont_naoinf_RR,
+                'Engenharias' : Cont_eng_RR,
+                'Ciencias Exatas e da Terra' : Cont_ter_RR,
+                'Ciencias da Saude' :Cont_sau_RR,
+                'Ciencias Sociais Aplicadas' : Cont_soc_RR,
+                'Ciencias Biologicas' : Cont_bio_RR,
+                'Ciencias Agrarias' : Cont_agr_RR,
+                'Ciencias Humanas' : Cont_hum_RR,
+                'Linguistica, Letras e Artes' : Cont_ling_RR,
+                'Outros' : Cont_out_RR} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#SC
+dict={'uf':'SC','Não informado' : Cont_naoinf_SC,
+                'Engenharias' : Cont_eng_SC,
+                'Ciencias Exatas e da Terra' : Cont_ter_SC,
+                'Ciencias da Saude' :Cont_sau_SC,
+                'Ciencias Sociais Aplicadas' : Cont_soc_SC,
+                'Ciencias Biologicas' : Cont_bio_SC,
+                'Ciencias Agrarias' : Cont_agr_SC,
+                'Ciencias Humanas' : Cont_hum_SC,
+                'Linguistica, Letras e Artes' : Cont_ling_SC,
+                'Outros' : Cont_out_SC} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#SP
+dict={'uf':'SP','Não informado' : Cont_naoinf_SP,
+                'Engenharias' : Cont_eng_SP,
+                'Ciencias Exatas e da Terra' : Cont_ter_SP,
+                'Ciencias da Saude' :Cont_sau_SP,
+                'Ciencias Sociais Aplicadas' : Cont_soc_SP,
+                'Ciencias Biologicas' : Cont_bio_SP,
+                'Ciencias Agrarias' : Cont_agr_SP,
+                'Ciencias Humanas' : Cont_hum_SP,
+                'Linguistica, Letras e Artes' : Cont_ling_SP,
+                'Outros' : Cont_out_SP} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+
+#SE
+dict={'uf':'SE','Não informado' : Cont_naoinf_SE,
+                'Engenharias' : Cont_eng_SE,
+                'Ciencias Exatas e da Terra' : Cont_ter_SE,
+                'Ciencias da Saude' :Cont_sau_SE,
+                'Ciencias Sociais Aplicadas' : Cont_soc_SE,
+                'Ciencias Biologicas' : Cont_bio_SE,
+                'Ciencias Agrarias' : Cont_agr_SE,
+                'Ciencias Humanas' : Cont_hum_SE,
+                'Linguistica, Letras e Artes' : Cont_ling_SE,
+                'Outros' : Cont_out_SE} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+#TO
+dict={'uf':'TO','Não informado' : Cont_naoinf_TO,
+                'Engenharias' : Cont_eng_TO ,
+                'Ciencias Exatas e da Terra' : Cont_ter_TO ,
+                'Ciencias da Saude' :Cont_sau_TO ,
+                'Ciencias Sociais Aplicadas' : Cont_soc_TO,
+                'Ciencias Biologicas' : Cont_bio_TO,
+                'Ciencias Agrarias' : Cont_agr_TO,
+                'Ciencias Humanas' : Cont_hum_TO,
+                'Linguistica, Letras e Artes' : Cont_ling_TO,
+                'Outros' : Cont_out_TO} 
+
+with open('grande_area_uf.csv', 'a') as f_object: 
+    
+    dictwriter_object = DictWriter(f_object, fieldnames=field_names)
+    
+    dictwriter_object.writerow(dict)
+    
+    f_object.close()
+    field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
+
+
+arquivo_grande_area = pd.read_csv("grande_area_uf.csv", sep=',', encoding='utf-8')
+
+#tirar linhas vazias
+for i in range(len(arquivo_grande_area)):
+    if " " in arquivo_grande_area['uf'][i]:
+        arquivo_grande_area = arquivo_grande_area.drop([i])
+
+arquivo_grande_area.to_csv('grande_area_uf.csv', sep=',', encoding='utf-8',index=False)
 
 '''
-#titulacao_cont = {'grande_area' : ['Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
-#                        'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros'],
-#        'Graduacao' : [Cont_NaoInf_Grad,Cont_Eng_Gra,Cont_CienTer_Gra,Cont_CienSau_Gra,Cont_CiencSoci_Gra,Cont_CienBio_Gra,Cont_CienAgr_Gra,Cont_CienHu_Gra,Cont_LinLetAr_Gra,Cont_Out_Gra],
-#        'Mestrado' : [Cont_NaoInf_Mes,Cont_Eng_Mes,Cont_CienTer_Mes,Cont_CienSau_Mes,Cont_CiencSoci_Mes,Cont_CienBio_Mes,Cont_CienAgr_Mes,Cont_CienHu_Mes,Cont_LinLetAr_Mes,Cont_Out_Mes],
-#        'Especializacao' : [Cont_NaoInf_Esp,Cont_Eng_Esp,Cont_CienTer_Esp,Cont_CienSau_Esp,Cont_CiencSoci_Esp,Cont_CienBio_Esp,Cont_CienAgr_Esp,Cont_CienHu_Esp,Cont_LinLetAr_Esp,Cont_Out_Esp],
-#        'Doutorado' : [Cont_NaoInf_Doc,Cont_Eng_Doc,Cont_CienTer_Doc,Cont_CienSau_Doc,Cont_CiencSoci_Doc,Cont_CienBio_Doc,Cont_CienAgr_Doc,Cont_CienHu_Doc,Cont_LinLetAr_Doc,Cont_Out_Doc],
-#        'PosDoc' : [Cont_NaoInf_PosDoc,Cont_Eng_PosDoc,Cont_CienTer_PosDoc,Cont_CienSau_PosDoc,Cont_CiencSoci_PosDoc,Cont_CienBio_PosDoc,Cont_CienAgr_PosDoc,Cont_CienHu_PosDoc,Cont_LinLetAr_PosDoc,Cont_Out_PosDoc],
-#        'Não Informado' : [Cont_NaoInf_NaoInf,Cont_Eng_NaoInf,Cont_CienTer_NaoInf,Cont_CienSau_NaoInf,Cont_CiencSoci_NaoInf,Cont_CienBio_NaoInf,Cont_CienAgr_NaoInf,Cont_CienHu_NaoInf,Cont_LinLetAr_NaoInf,Cont_Out_NaoInf]
-#        }
-
-
-
-
-'''
-
 #=================Plot da Distribuição da Titulação=====================
 labels_titulacao = ['Não Informado','Graduação','Especialização','Mestrado','Doutorado','Pós Doutorado']
 values_titulacao = [Cont_Naoinformado,Cont_Grad,Cont_Esp,Cont_Mes,Cont_Doc,Cont_Pos_Doc]
 
 figura_titulacao = go.Figure(data=[go.Pie(labels=labels_titulacao, values=values_titulacao)])
-figura_titulacao.update_layout(title='Distribuição das Titulações no Brasil', font=dict(size=18))
+figura_titulacao.update_layout(title='Distribuição das Titulações no Brasil')
 figura_titulacao.show()
 
 #=================Plot da Distribuição das Grandes Áreas=====================
@@ -862,25 +1495,37 @@ values_grandes_areas = [Cont_linhas_naoinf, Cont_linhas_eng, Cont_linhas_ter, Co
                 Cont_linhas_bio, Cont_linhas_agr, Cont_linhas_hum, Cont_linhas_ling, Cont_linhas_out]
 
 figura_grande_areas = go.Figure(data=[go.Pie(labels=labels_grandes_areas, values=values_grandes_areas)])
-figura_grande_areas.update_layout(title='Distribuição das Grandes Áreas no Brasil', font=dict(size=18))
+figura_grande_areas.update_layout(title='Distribuição das Grandes Áreas no Brasil')
 figura_grande_areas.show()
 
 
 #=================Plot da Distribuição das Titulações pelas Grandes Áreas=====================
-labels_graduacao = ['Não Informado','Graduação','Especialização','Mestrado','Doutorado','Pós Doutorado']
-values_graduacao = [Cont_linhas_naoinf, Cont_linhas_eng, Cont_linhas_ter, Cont_linhas_sau, Cont_linhas_soc,
+labels_titulacao_grande_area = ['Não Informado','Graduação','Especialização','Mestrado','Doutorado','Pós Doutorado']
+values_titulacao_grande_area = [Cont_linhas_naoinf, Cont_linhas_eng, Cont_linhas_ter, Cont_linhas_sau, Cont_linhas_soc,
                 Cont_linhas_bio, Cont_linhas_agr, Cont_linhas_hum, Cont_linhas_ling, Cont_linhas_out]
 
-figura_graduacao = go.Figure(data=[go.Pie(labels=labels_graduacao, values=values_graduacao)])
-figura_graduacao.update_layout(title='Distribuição das Titulações por Grande Área', font=dict(size=18))
-figura_graduacao.show()
+figura_titulacao_grande_area = go.Figure(data=[go.Pie(labels=labels_titulacao_grande_area, values=values_titulacao_grande_area)])
+figura_titulacao_grande_area.update_layout(title='Distribuição das Titulações por Grande Área')
+figura_titulacao_grande_area.show()
 
 
-##========================Plot das Patentes no decorrer dos anos===============================
+#========================Plot das Grandes Áreas por UF===============================
 #labels_graduacao = ['Não Informado','Graduação','Especialização','Mestrado','Doutorado','Pós Doutorado']
-#values_graduacao = [Cont_linhas_naoinf, Cont_linhas_eng, Cont_linhas_ter, Cont_linhas_sau, Cont_linhas_soc,
-#                Cont_linhas_bio, Cont_linhas_agr, Cont_linhas_hum, Cont_linhas_ling, Cont_linhas_out]#
+#values_graduacao = []
 #
 #figura_graduacao = go.Figure(data=[go.Pie(labels=labels_graduacao, values=values_graduacao)])
-#figura_graduacao.update_layout(title='Distribuição das Grandes Áreas no Brasil', font=dict(size=18))
+#figura_graduacao.update_layout(title='Distribuição das Grandes Áreas no Brasil')
 #figura_graduacao.show()
+
+
+'''
+
+
+fig = go.Figure(data=[go.Bar(
+    x = arquivo_grande_area['uf'],
+    y = arquivo_grande_area['Engenharias'],
+    width=[0.8, 0.8]
+)])
+
+fig.update_layout(title_text='Distribuição da Grande Área da Engenharia no Brasil')
+fig.show()
