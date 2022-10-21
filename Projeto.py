@@ -68,3 +68,5 @@ arquivo_formacao[:] = arquivo_formacao[:].fillna('Não informado')
 
 #criar arquivo filtrado 2
 arquivo_formacao.to_csv('nos_filtro_formacao.csv',sep=',',encoding='utf-8',index=False)
+
+

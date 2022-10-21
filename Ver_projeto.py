@@ -10,7 +10,7 @@ arquivo_filtrado = pd.read_csv('nos_2_filtro.csv',sep=',',encoding='utf-8')
 #titulacao = ['Graduacao','Mestrado','Especializacao','Doutorado','PosDoc','Não Informado']
 #grande_area = {'Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
 #                'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros'}
-#uf = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO',]
+#uf = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
 
 #=======================Quantidade de titulação total======================
 
@@ -839,7 +839,7 @@ Cont_out_DF = len(linhas_out_DF)
 #
 #===================Criar arquivo da Grande Área por UF=====================
 
-linha_cabecalho =  ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+linha_cabecalho =  ['UF','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
                 'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
 
 with open('grande_area_uf.csv', 'a', encoding='utf-8') as f_object: 
@@ -851,19 +851,19 @@ with open('grande_area_uf.csv', 'a', encoding='utf-8') as f_object:
     f_object.close()
 
 
-field_names = ['uf','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
+field_names = ['UF','Não informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude','Ciencias Sociais Aplicadas',
                 'Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas','Linguistica, Letras e Artes','Outros']
 
-dict={'uf':'AC','Não informado' : Cont_naoinf_AC,
-                'Engenharias' : Cont_eng_AC,
-                'Ciencias Exatas e da Terra' : Cont_ter_AC,
-                'Ciencias da Saude' :Cont_sau_AC,
-                'Ciencias Sociais Aplicadas' : Cont_soc_AC,
-                'Ciencias Biologicas' : Cont_bio_AC,
-                'Ciencias Agrarias' : Cont_agr_AC,
-                'Ciencias Humanas' : Cont_hum_AC,
-                'Linguistica, Letras e Artes' : Cont_ling_AC,
-                'Outros' : Cont_out_AC} 
+dict={'UF':'AC','Não informado' : Cont_naoinf_AC,
+        'Engenharias' : Cont_eng_AC,
+        'Ciencias Exatas e da Terra' : Cont_ter_AC,
+        'Ciencias da Saude' :Cont_sau_AC,
+        'Ciencias Sociais Aplicadas' : Cont_soc_AC,
+        'Ciencias Biologicas' : Cont_bio_AC,
+        'Ciencias Agrarias' : Cont_agr_AC,
+        'Ciencias Humanas' : Cont_hum_AC,
+        'Linguistica, Letras e Artes' : Cont_ling_AC,
+        'Outros' : Cont_out_AC} 
 
 
 
@@ -1473,10 +1473,11 @@ arquivo_grande_area = pd.read_csv("grande_area_uf.csv", sep=',', encoding='utf-8
 
 #tirar linhas vazias
 for i in range(len(arquivo_grande_area)):
-    if " " in arquivo_grande_area['uf'][i]:
+    if " " in arquivo_grande_area['UF'][i]:
         arquivo_grande_area = arquivo_grande_area.drop([i])
 
 arquivo_grande_area.to_csv('grande_area_uf.csv', sep=',', encoding='utf-8',index=False)
+
 
 '''
 #=================Plot da Distribuição da Titulação=====================
@@ -1497,16 +1498,29 @@ values_grandes_areas = [Cont_linhas_naoinf, Cont_linhas_eng, Cont_linhas_ter, Co
 figura_grande_areas = go.Figure(data=[go.Pie(labels=labels_grandes_areas, values=values_grandes_areas)])
 figura_grande_areas.update_layout(title='Distribuição das Grandes Áreas no Brasil')
 figura_grande_areas.show()
+'''
+
+#=================Plot da Distribuição das Grandes Áreas por UF=====================
+#labels_titulacao_grande_area = ['Não Informado','Engenharias','Ciencias Exatas e da Terra','Ciencias da Saude',
+#                'Ciencias Sociais Aplicadas','Ciencias Biologicas','Ciencias Agrarias','Ciencias Humanas',
+#                'Linguistica; Letras e Artes','Outros']
+#values_titulacao_grande_area = []
+#
+#figura_titulacao_grande_area = go.Figure(data=[go.Pie(labels=labels_titulacao_grande_area, values=values_titulacao_grande_area)])
+#figura_titulacao_grande_area.update_layout(title='Distribuição das Titulações por Grande Área')
+#figura_titulacao_grande_area.show()
+#
+#
+#x = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
+#fig = go.Figure(go.Bar(x=x, y=[2,5,1,9], name='Montreal'))
+#fig.add_trace(go.Bar(x=x, y=[1, 4, 9, 16], name='Ottawa'))
+#fig.add_trace(go.Bar(x=x, y=[6, 8, 4.5, 8], name='Toronto'))
+#
+#fig.update_layout(barmode='stack')
+#fig.update_xaxes(categoryorder='category ascending')
+#fig.show()
 
 
-#=================Plot da Distribuição das Titulações pelas Grandes Áreas=====================
-labels_titulacao_grande_area = ['Não Informado','Graduação','Especialização','Mestrado','Doutorado','Pós Doutorado']
-values_titulacao_grande_area = [Cont_linhas_naoinf, Cont_linhas_eng, Cont_linhas_ter, Cont_linhas_sau, Cont_linhas_soc,
-                Cont_linhas_bio, Cont_linhas_agr, Cont_linhas_hum, Cont_linhas_ling, Cont_linhas_out]
-
-figura_titulacao_grande_area = go.Figure(data=[go.Pie(labels=labels_titulacao_grande_area, values=values_titulacao_grande_area)])
-figura_titulacao_grande_area.update_layout(title='Distribuição das Titulações por Grande Área')
-figura_titulacao_grande_area.show()
 
 
 #========================Plot das Grandes Áreas por UF===============================
@@ -1518,14 +1532,14 @@ figura_titulacao_grande_area.show()
 #figura_graduacao.show()
 
 
-'''
 
 
-fig = go.Figure(data=[go.Bar(
-    x = arquivo_grande_area['uf'],
-    y = arquivo_grande_area['Engenharias'],
-    width=[0.8, 0.8]
-)])
 
-fig.update_layout(title_text='Distribuição da Grande Área da Engenharia no Brasil')
-fig.show()
+#fig = go.Figure(data=[go.Bar(
+#    x = arquivo_grande_area['uf'],
+#    y = arquivo_grande_area['Engenharias'],
+#    width=[0.8, 0.8]
+#)])
+#
+#fig.update_layout(title_text='Distribuição da Grande Área da Engenharia no Brasil')
+#fig.show()
